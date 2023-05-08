@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { delay, motion } from 'framer-motion';
 import { Typewriter } from 'react-simple-typewriter';
 import { ROUTES } from '../../constants/routes';
@@ -24,15 +24,18 @@ const Home = () => {
     const [demerit1, setDemerit1] = useState<number | null>(null);
     const [demerit2, setDemerit2] = useState<number | null>(null);
 
+    // phoneNumber 업데이트 함수
     const handlePhoneNumberChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setPhoneNumber(event.target.value);
     };
 
+    // 조회 함수
     const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        // Firestore에서 전화번호 조회
+        // Firestore에서 전화번호 조회(query함수를 이용해서 demeritData컬렉션에서 핸드폰번호필드가 입력받은 phoneNumber이랑 일치하는지 조회함)
         const q = query(collection(db, 'demeritData'), where('핸드폰번호', '==', phoneNumber));
+        // getDocs 함수를 이용해서 Firestore에서 데이터를 조회하고, querySnapshot.empty 속성을 이용해 조회된 데이터가 있는지 확인함
         const querySnapshot = await getDocs(q);
 
         // 조회된 데이터가 없으면 에러 메시지 출력
@@ -68,6 +71,7 @@ const Home = () => {
                 <div className="form-actions" style={{ textAlign: 'center', marginTop: '2vw' }}>
                     <button style={{ fontSize: 20, border: '2px solid #ddd', padding: '0.2rem 2rem', backgroundColor: 'eee', color: '#333' }}>조회</button>
                 </div>
+                <div>apikey:{firebaseConfig.apiKey},{firebaseConfig.projectId}, ph+demerit:{phoneNumber}, {demerit}, {'demeritData'}</div>
             </form>
             {demerit !== null && (
                 <div style={{ textAlign: 'center', marginTop: '2vw', fontSize: 30, color: '#333' }}>

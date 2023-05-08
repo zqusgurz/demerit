@@ -5,6 +5,7 @@ import 'firebase/firestore'
 import { initializeApp } from "firebase/app";
 import { getAnalytics, isSupported } from "firebase/analytics";
 
+
 // Firebase 구성 정보
 export const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_API_KEY,
