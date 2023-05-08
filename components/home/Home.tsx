@@ -6,7 +6,6 @@ import { useMediaQuery } from 'react-responsive';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 
-
 import { initializeApp, getApp } from 'firebase/app';
 import { getFirestore, collection, query, where, getDocs } from 'firebase/firestore';
 
@@ -14,6 +13,7 @@ const firebaseConfig = require('../../firebaseConfig.js');
 
 const app = !getApp() ? initializeApp(firebaseConfig) : getApp();
 const db = getFirestore(app);
+export {db}
 
 const Home = () => {
     const isMobile = useMediaQuery({ query: "(max-width : 767px)" });
