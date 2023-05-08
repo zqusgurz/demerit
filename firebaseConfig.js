@@ -1,22 +1,22 @@
-// Import the functions you need from the SDKs you need
+// firebaseConfig.js
+import firebase from "firebase/app"
+import 'firebase/firestore'
+
 import { initializeApp } from "firebase/app";
 import { getAnalytics, isSupported } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Firebase 구성 정보
 export const firebaseConfig = {
-  apiKey: "NEXT_PUBLIC_API_KEY",
-  authDomain: "demerit-meating.firebaseapp.com",
-  projectId: "demerit-meating",
-  storageBucket: "demerit-meating.appspot.com",
-  messagingSenderId: "192507141481",
-  appId: "1:192507141481:web:eb97ad73dd4611a07131f8",
-  measurementId: "G-XQEQBZ7JN5"
+  apiKey: process.env.NEXT_PUBLIC_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_MEASUREMENT_ID,
 };
 
-// Initialize Firebase
+// Firebase 앱 초기화
 const app = initializeApp(firebaseConfig);
 if (isSupported()) {
   const analytics = getAnalytics(app);
