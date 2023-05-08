@@ -22,3 +22,5 @@ if (isSupported()) {
   const analytics = getAnalytics(app);
   // Firebase Analytics 사용
 }
+
+export default app;
