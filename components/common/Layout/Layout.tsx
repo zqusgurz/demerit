@@ -15,7 +15,7 @@ const Layout = (props: PropsWithChildren) => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta property="og:title" content="미팅놈들 벌점 조회" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://hyuk-portfolio.vercel.app/" />
+        <meta property="og:url" content="https://demerit.vercel.app/" />
         <meta property="og:image" content="/icons/logo.jpg" />
         <meta property="og:article:author" content="Hyuk" />
         <link rel="icon" href='/icons/logo.jpg'/>
