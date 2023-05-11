@@ -75,7 +75,7 @@ const Home = () => {
 
     return (
         <section id="home" className="container flex flex-col items-center h-screen">
-            <div className="font-bold " style={{ fontSize: isMobile ? '4vw' : '2vw', marginTop: '2vw', marginBottom: '3vw', color: isMobile ? "rgba(255,255,255)" : '#000' }}>미팅놈들 벌점 조회</div>
+            <div className="font-bold " style={{ fontSize: isMobile ? '4vw' : '2vw', marginTop: '4vw', marginBottom: '3vw', color: isMobile ? "rgba(255,255,255)" : '#000' }}>미팅놈들 벌점 조회</div>
             <form onSubmit={handleFormSubmit}>
                 <div className="form-control">
                     <p style={{ fontSize: '1vw', marginBottom: '1vw', color: isMobile ? '#FFF' : '#000', textAlign: 'center' }}>아래 입력창에 01012341234와 같은 형식으로 번호 입력 후 조회 버튼을 눌러주세요</p>
