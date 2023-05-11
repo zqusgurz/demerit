@@ -26,6 +26,7 @@ const textReveal = {
 
 const Home = () => {
     const isMobile = useMediaQuery({ query: "(max-width : 767px)" }); // 모바일 화면일 때 조건을 추가해줍니다.
+    const StrokeColor = isMobile ? "Pc" : "Mobile";
 
     const [phoneNumber, setPhoneNumber] = useState('');
     const [demerit, setDemerit] = useState<number | null>(null);
@@ -74,7 +75,7 @@ const Home = () => {
 
     return (
         <section id="home" className="container flex flex-col items-center justify-center h-screen">
-            <div className="font-bold " style={{ fontSize: '4vw', marginBottom: '3vw', color: isMobile ? '#FFF' : '#000' }}>미팅놈들 벌점 조회</div>
+            <div className="font-bold " style={{ fontSize: '4vw', marginBottom: '3vw', color: isMobile ? "rgba(255,255,255)" : '#000' }}>미팅놈들 벌점 조회</div>
             <form onSubmit={handleFormSubmit}>
                 <div className="form-control">
                     <p style={{ fontSize: '1vw', marginBottom: '1vw', color: isMobile ? '#FFF' : '#000', textAlign: 'center' }}>아래 입력창에 01012341234와 같은 형식으로 번호 입력 후 조회 버튼을 눌러주세요</p>
@@ -100,7 +101,9 @@ const Home = () => {
                 <div style={{ textAlign: 'center', marginTop: '2vw', fontSize: '2vw', color: isMobile ? '#FFF' : '#000' }}>
                     파토 벌점 : {demerit2}
                 </div>
+                
             )}
+            <p style={{ opacity: 0, visibility: "hidden", margin: 0, display: "none" }}>{StrokeColor}</p>
 
         </section>
     );
