@@ -75,17 +75,27 @@ const Home = () => {
 
     return (
         <section id="home" className="container flex flex-col items-center h-screen">
-            <div className="font-bold " style={{ fontSize: isMobile ? '4vw' : '2vw', marginTop: isMobile ? '20vw' : '5vw', marginBottom: '3vw', color: isMobile ? "rgba(255,255,255)" : '#000' }}>미팅놈들 벌점 조회</div>
+            <motion.div variants={textReveal}
+          initial={{ visibility: 'hidden', opacity: 0 }}
+          animate={{ visibility: 'visible', opacity: 1 }}
+          transition={{ ...transition}}
+          className="font-bold " style={{ fontSize: isMobile ? '4vw' : '2vw', marginTop: isMobile ? '20vw' : '5vw', marginBottom: '3vw', color: isMobile ? "rgba(255,255,255)" : '#000' }}>미팅놈들 벌점 조회</motion.div>
             <form onSubmit={handleFormSubmit}>
-                <div className="form-control">
+            <motion.div variants={textReveal}
+          initial={{ visibility: 'hidden', opacity: 0 }}
+          animate={{ visibility: 'visible', opacity: 1 }}
+          transition={{ ...transition}} className="form-control">
                     <p style={{ fontSize: '1vw', marginBottom: '1vw', color: isMobile ? '#FFF' : '#000', textAlign: 'center' }}>아래 입력창에 01012341234와 같은 형식으로 번호 입력 후 조회 버튼을 눌러주세요</p>
                     <label htmlFor="number" style={{ fontSize: isMobile ? '3vw' : '2vw', marginRight: '2vw', color: isMobile ? '#FFF' : '#000' }}>전화번호 : </label>
                     <input type="text" value={phoneNumber} onChange={handlePhoneNumberChange} id="number" style={{ fontSize: isMobile ? '3vw' : '2vw', border: '2px solid #ccc' }} />
-                </div>
+                </motion.div>
 
-                <div className="form-actions" style={{ textAlign: 'center', marginTop: '2vw' }}>
+                <motion.div variants={textReveal}
+          initial={{ visibility: 'hidden', opacity: 0 }}
+          animate={{ visibility: 'visible', opacity: 1 }}
+          transition={{ ...transition}} className="form-actions" style={{ textAlign: 'center', marginTop: '2vw' }}>
                     <button style={{ fontSize: isMobile ? '2vw' : '1vw', border: '2px solid #ddd', padding: '0.2rem 2rem', backgroundColor: 'eee', color: isMobile ? '#FFF' : '#000' }}>조회</button>
-                </div>
+                </motion.div>
             </form>
             {demerit !== null && (
                 <div style={{ textAlign: 'center', marginTop: '2vw', fontSize: isMobile ? '4vw' : '2vw', color: isMobile ? '#FFF' : '#000' }}>
