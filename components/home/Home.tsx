@@ -77,7 +77,7 @@ const Home = () => {
             <div className="font-bold " style={{ fontSize: '4vw', marginBottom: '3vw', color: isMobile ? '#FFF' : '#000' }}>미팅놈들 벌점 조회</div>
             <form onSubmit={handleFormSubmit}>
                 <div className="form-control">
-                    <p style={{ fontSize: 18, marginBottom: '1vw', color: isMobile ? '#FFF' : '#000', textAlign: 'center' }}>아래 입력창에 01012341234와 같은 형식으로 번호 입력 후 조회 버튼을 눌러주세요</p>
+                    <p style={{ fontSize: '1vw', marginBottom: '1vw', color: isMobile ? '#FFF' : '#000', textAlign: 'center' }}>아래 입력창에 01012341234와 같은 형식으로 번호 입력 후 조회 버튼을 눌러주세요</p>
                     <label htmlFor="number" style={{ fontSize: 24, marginRight: '2vw', color: isMobile ? '#FFF' : '#000' }}>전화번호 : </label>
                     <input type="text" value={phoneNumber} onChange={handlePhoneNumberChange} id="number" style={{ fontSize: 24, border: '2px solid #ccc' }} />
                 </div>
