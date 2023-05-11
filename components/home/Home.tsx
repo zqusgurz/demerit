@@ -11,18 +11,18 @@ import { useMediaQuery } from 'react-responsive';
 const transition = {
     duration: 1.5,
     ease: [0.6, -0.05, 0.01, 0.9],
-  }
-  
-  const textReveal = {
+}
+
+const textReveal = {
     initial: {
-      x: "100%",
-      opacity: 0,
+        x: "100%",
+        opacity: 0,
     },
     animate: {
-      x: "0%",
-      opacity: 1,
+        x: "0%",
+        opacity: 1,
     },
-  };
+};
 
 const Home = () => {
     const isMobile = useMediaQuery({ query: "(max-width : 767px)" }); // 모바일 화면일 때 조건을 추가해줍니다.
