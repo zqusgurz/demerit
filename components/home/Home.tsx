@@ -74,7 +74,7 @@ const Home = () => {
 
     return (
         <section id="home" className="container flex flex-col items-center justify-center h-screen">
-            <div className="font-bold " style={{ fontSize: 48, marginBottom: '3vw', color: isMobile ? '#FFF' : '#000' }}>미팅놈들 벌점 조회</div>
+            <div className="font-bold " style={{ fontSize: '4vw', marginBottom: '3vw', color: isMobile ? '#FFF' : '#000' }}>미팅놈들 벌점 조회</div>
             <form onSubmit={handleFormSubmit}>
                 <div className="form-control">
                     <p style={{ fontSize: 18, marginBottom: '1vw', color: isMobile ? '#FFF' : '#000', textAlign: 'center' }}>아래 입력창에 01012341234와 같은 형식으로 번호 입력 후 조회 버튼을 눌러주세요</p>
@@ -83,21 +83,21 @@ const Home = () => {
                 </div>
 
                 <div className="form-actions" style={{ textAlign: 'center', marginTop: '2vw' }}>
-                    <button style={{ fontSize: 20, border: '2px solid #ddd', padding: '0.2rem 2rem', backgroundColor: 'eee', color: isMobile ? '#FFF' : '#000' }}>조회</button>
+                    <button style={{ fontSize: '1vw', border: '2px solid #ddd', padding: '0.2rem 2rem', backgroundColor: 'eee', color: isMobile ? '#FFF' : '#000' }}>조회</button>
                 </div>
             </form>
             {demerit !== null && (
-                <div style={{ textAlign: 'center', marginTop: '2vw', fontSize: 30, color: isMobile ? '#FFF' : '#000' }}>
+                <div style={{ textAlign: 'center', marginTop: '2vw', fontSize: '2vw', color: isMobile ? '#FFF' : '#000' }}>
                     상벌점 : {demerit}
                 </div>
             )}
             {demerit1 !== null && (
-                <div style={{ textAlign: 'center', marginTop: '2vw', fontSize: 30, color: isMobile ? '#FFF' : '#000' }}>
+                <div style={{ textAlign: 'center', marginTop: '2vw', fontSize: '2vw', color: isMobile ? '#FFF' : '#000' }}>
                     기타 벌점 : {demerit1}
                 </div>
             )}
             {demerit2 !== null && (
-                <div style={{ textAlign: 'center', marginTop: '2vw', fontSize: 30, color: isMobile ? '#FFF' : '#000' }}>
+                <div style={{ textAlign: 'center', marginTop: '2vw', fontSize: '2vw', color: isMobile ? '#FFF' : '#000' }}>
                     파토 벌점 : {demerit2}
                 </div>
             )}
