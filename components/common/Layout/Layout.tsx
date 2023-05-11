@@ -19,7 +19,6 @@ const Layout = (props: PropsWithChildren) => {
         <meta property="og:image" content="/icons/logo.jpg" />
         <meta property="og:article:author" content="Hyuk" />
         <link rel="icon" href='/icons/logo.jpg'/>
-        {/* <link rel="icon" href="/favicon.svg" /> */}
       </Head>
       <Header />
       {props.children}
