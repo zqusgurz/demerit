@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { query, collection, getDoc, getDocs, getFirestore, limit, orderBy, where, doc } from 'firebase/firestore/lite';
+import { query, DocumentData, Query, QueryDocumentSnapshot, QuerySnapshot, collection, getDoc, getDocs, getFirestore, limit, orderBy, where, doc } from 'firebase/firestore/lite';
 import { db } from '../../firebaseConfig';
 import { motion } from 'framer-motion';
 import { useMediaQuery } from 'react-responsive';
