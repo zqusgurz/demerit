@@ -55,7 +55,7 @@ const Home = () => {
         const trimmedPhoneNumber = sanitizedPhoneNumber.substring(1);
       
         // SQL 쿼리 실행
-        const demeritRef = collection(db, 'demerits');
+        const demeritRef = collection(db, 'demeritData');
         const querySnapshot = await getDocs(query(demeritRef, where('핸드폰번호', '==', trimmedPhoneNumber)));
         if (querySnapshot.empty) {
           alert('해당하는 데이터가 없습니다.');
