@@ -1,9 +1,12 @@
 
 import { useState } from 'react';
-import { query, collection, getDocs, where } from 'firebase/firestore/lite';
+import { query, DocumentData, Query, QueryDocumentSnapshot, QuerySnapshot, collection, getDoc, getDocs, getFirestore, limit, orderBy, where, doc } from 'firebase/firestore/lite';
 import { db } from '../../firebaseConfig';
 import { motion } from 'framer-motion';
 import { useMediaQuery } from 'react-responsive';
+import { initializeApp } from 'firebase/app';
+import { data } from 'autoprefixer';
+import { app } from 'firebase-admin';
 
 const transition = {
     duration: 1.5,
@@ -50,7 +53,7 @@ const Home = () => {
         // 입력값 정제
         const sanitizedPhoneNumber = phoneNumber.replace(/['";\(\)]/g, '');
         const trimmedPhoneNumber = sanitizedPhoneNumber.substring(1);
-
+        
         // SQL 쿼리 실행
         const demeritRef = collection(db, 'demeritData');
         const querySnapshot = await getDocs(query(demeritRef, where('핸드폰번호', '==', trimmedPhoneNumber)));
