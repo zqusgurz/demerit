@@ -1,9 +1,12 @@
 
 import { useState } from 'react';
-import { query, collection, getDocs, where } from 'firebase/firestore/lite';
+import { query, collection, getDoc, getDocs, getFirestore, limit, orderBy, where, doc } from 'firebase/firestore/lite';
 import { db } from '../../firebaseConfig';
 import { motion } from 'framer-motion';
 import { useMediaQuery } from 'react-responsive';
+import { initializeApp } from 'firebase/app';
+import { data } from 'autoprefixer';
+import { app } from 'firebase-admin';
 
 const transition = {
     duration: 1.5,
