@@ -87,8 +87,8 @@ const Home = () => {
                     style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     <p style={{ fontSize: isMobile ? 16 : 20, marginBottom: '2vw', color: '#000', textAlign: 'center' }}>아래 입력창에 01012341234와 같은 형식으로 번호 입력 후 조회 버튼을 눌러주세요</p>
                     <div style={{ display: 'flex', alignItems: 'center' }}>
-                        <label htmlFor="number" style={{ fontSize: isMobile ? '4vw' : '2vw', marginRight: '1vw', color: '#000' }}>전화번호 : </label>
-                        <input type="text" value={phoneNumber} onChange={handlePhoneNumberChange} id="number" style={{ fontSize: isMobile ? '4vw' : '2vw', border: '2px solid #ccc' }} />
+                        <label htmlFor="number" style={{ fontSize: isMobile ? '3vw' : '2vw', marginRight: '1vw', color: '#000' }}>전화번호 : </label>
+                        <input type="text" value={phoneNumber} onChange={handlePhoneNumberChange} id="number" style={{ fontSize: isMobile ? '3vw' : '2vw', border: '2px solid #ccc' }} />
                     </div>
                 </motion.div>
 
