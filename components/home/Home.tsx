@@ -1,9 +1,6 @@
 
-import { useEffect, useState } from 'react';
-import { query, DocumentData, Query, QueryDocumentSnapshot, QuerySnapshot, collection, getDoc, getDocs, getFirestore, limit, orderBy, where, doc } from 'firebase/firestore/lite';
-import { initializeApp } from 'firebase/app';
-import { data } from 'autoprefixer';
-import { app } from 'firebase-admin';
+import { useState } from 'react';
+import { query, collection, getDocs, where } from 'firebase/firestore/lite';
 import { db } from '../../firebaseConfig';
 import { motion } from 'framer-motion';
 import { useMediaQuery } from 'react-responsive';
@@ -42,36 +39,38 @@ const Home = () => {
     // 조회 함수
     const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-
-        if (!demeritRef) {
-            return;
+      
+        // 입력값 검증
+        const phoneNumberRegex = /^01([0|1|6|7|8|9])(\d{3}|\d{4})(\d{4})$/;
+        if (!phoneNumberRegex.test(phoneNumber)) {
+          alert('전화번호를 올바른 형식으로 입력해주세요.');
+          return;
         }
-        const stringPhoneNumber = phoneNumber.toString();
-        const trimmedPhoneNumber = stringPhoneNumber.substring(1);
-        const q = query(demeritRef, where("핸드폰번호", "==", trimmedPhoneNumber));
-        const querySnapshot = await getDocs(q);
-        if (!querySnapshot) {
-            alert('해당하는 데이터가 없습니다.');
-            return;
-        }
+      
+        // 입력값 정제
+        const sanitizedPhoneNumber = phoneNumber.replace(/['";\(\)]/g, '');
+      
+        // SQL 쿼리 실행
+        const demeritRef = collection(db, 'demerits');
+        const querySnapshot = await getDocs(query(demeritRef, where('핸드폰번호', '==', sanitizedPhoneNumber)));
         if (querySnapshot.empty) {
-            alert('해당하는 데이터가 없습니다.');
-            return;
+          alert('해당하는 데이터가 없습니다.');
+          return;
         }
-
+      
         let demerit = 0;
         let demerit1 = 0;
         let demerit2 = 0;
         querySnapshot.forEach((doc) => {
-            const data = doc.data();
-            demerit += data.상벌점;
-            demerit1 += data.기타벌점 || 0;
-            demerit2 += data.파토벌점 || 0;
+          const data = doc.data();
+          demerit += data.상벌점;
+          demerit1 += data.기타벌점 || 0;
+          demerit2 += data.파토벌점 || 0;
         });
         setDemerit(demerit);
         setDemerit1(demerit1);
         setDemerit2(demerit2);
-    };
+      };
 
     return (
         <section id="home" className="container flex flex-col items-center h-screen">
@@ -82,12 +81,15 @@ const Home = () => {
           className="font-bold " style={{ fontSize: isMobile ? '4vw' : '2vw', marginTop: isMobile ? '20vw' : '5vw', marginBottom: '3vw', color: '#000' }}>미팅놈들 벌점 조회</motion.div>
             <form onSubmit={handleFormSubmit}>
             <motion.div variants={textReveal}
-          initial={{ visibility: 'hidden', opacity: 0 }}
-          animate={{ visibility: 'visible', opacity: 1 }}
-          transition={{ ...transition}} className="form-control">
-                    <p style={{ fontSize: '1vw', marginBottom: '1vw', color: '#000', textAlign: 'center' }}>아래 입력창에 01012341234와 같은 형식으로 번호 입력 후 조회 버튼을 눌러주세요</p>
-                    <label htmlFor="number" style={{ fontSize: isMobile ? '3vw' : '2vw', marginRight: '2vw', color: '#000' }}>전화번호 : </label>
-                    <input type="text" value={phoneNumber} onChange={handlePhoneNumberChange} id="number" style={{ fontSize: isMobile ? '3vw' : '2vw', border: '2px solid #ccc' }} />
+                    initial={{ visibility: 'hidden', opacity: 0 }}
+                    animate={{ visibility: 'visible', opacity: 1 }}
+                    transition={{ ...transition }} className="form-control"
+                    style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    <p style={{ fontSize: isMobile ? 16 : 20, marginBottom: '2vw', color: '#000', textAlign: 'center' }}>아래 입력창에 01012341234와 같은 형식으로 번호 입력 후 조회 버튼을 눌러주세요</p>
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                        <label htmlFor="number" style={{ fontSize: isMobile ? '3vw' : '2vw', marginRight: '1vw', color: '#000' }}>전화번호 : </label>
+                        <input type="text" value={phoneNumber} onChange={handlePhoneNumberChange} id="number" style={{ fontSize: isMobile ? '3vw' : '2vw', border: '2px solid #ccc' }} />
+                    </div>
                 </motion.div>
 
                 <motion.div variants={textReveal}
